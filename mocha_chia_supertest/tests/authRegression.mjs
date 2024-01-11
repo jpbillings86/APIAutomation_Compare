@@ -3,10 +3,13 @@ const request = supertest('https://restful-booker.herokuapp.com');
 import * as chai from 'chai';
 const { assert } = chai;
 
+var validUsername = 'admin';
+var validPassword = 'password123';
+
 it('POST /auth with valid credientials', () => {
   const data = {
-      username:'admin',
-      password:'password123',
+      username: validUsername,
+      password: validPassword,
    };
   return request
    .post ('/auth')
@@ -14,14 +17,15 @@ it('POST /auth with valid credientials', () => {
    .expect(200)
    .then((res) => {
     assert.isNotEmpty(res.body);
+    assert.isObject(res.body);
     assert.hasAnyKeys(res.body, 'token');
     });
 });
 
 it('POST /auth with invalid username credientials', () => {
   const data = {
-      username:'doesnotexist',
-      password:'password123',
+      username: 'doesnotexist',
+      password: validPassword,
    };
   return request
    .post ('/auth')
@@ -29,6 +33,7 @@ it('POST /auth with invalid username credientials', () => {
    .expect(200)
    .then((res) => {
     assert.isNotEmpty(res.body);
+    assert.isObject(res.body);
     assert.hasAnyKeys(res.body, 'reason');
     assert.equal(res.body.reason,'Bad credentials');
     });
@@ -36,8 +41,8 @@ it('POST /auth with invalid username credientials', () => {
 
 it('POST /auth with invalid password credientials', () => {
   const data = {
-      username:'admin',
-      password:'badpassword',
+      username: validUsername,
+      password: 'badpassword',
    };
   return request
    .post ('/auth')
@@ -45,6 +50,7 @@ it('POST /auth with invalid password credientials', () => {
    .expect(200)
    .then((res) => {
     assert.isNotEmpty(res.body);
+    assert.isObject(res.body);
     assert.hasAnyKeys(res.body, 'reason');
     assert.equal(res.body.reason,'Bad credentials');
     });
@@ -58,6 +64,7 @@ it('POST /auth with no credientials', () => {
    .expect(200)
    .then((res) => {
     assert.isNotEmpty(res.body);
+    assert.isObject(res.body);
     assert.hasAnyKeys(res.body, 'reason');
     assert.equal(res.body.reason,'Bad credentials');
     });
@@ -65,7 +72,7 @@ it('POST /auth with no credientials', () => {
 
 it('POST /auth with missing username credientials', () => {
   const data = {
-    password:'password123'
+    password: validPassword
    };
   return request
    .post ('/auth')
@@ -73,6 +80,7 @@ it('POST /auth with missing username credientials', () => {
    .expect(200)
    .then((res) => {
     assert.isNotEmpty(res.body);
+    assert.isObject(res.body);
     assert.hasAnyKeys(res.body, 'reason');
     assert.equal(res.body.reason,'Bad credentials');
     });
@@ -80,7 +88,7 @@ it('POST /auth with missing username credientials', () => {
 
 it('POST /auth with missing password credientials', () => {
   const data = {
-      username:'admin'
+      username: validUsername
    };
   return request
    .post ('/auth')
@@ -88,6 +96,7 @@ it('POST /auth with missing password credientials', () => {
    .expect(200)
    .then((res) => {
     assert.isNotEmpty(res.body);
+    assert.isObject(res.body);
     assert.hasAnyKeys(res.body, 'reason');
     assert.equal(res.body.reason,'Bad credentials');
     });
