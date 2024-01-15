@@ -16,7 +16,7 @@ public class APITest {
     }
 
     @Test
-    public void Post_Auth_With_Valid_Credientials() {
+    public void Post_Auth_With_Valid_Credentials() {
         String requestBody = "{ \"username\": \"" + valid_username + "\", \"password\": \"" + valid_password + "\" }";
         Response response = APIAuth(requestBody);
         response.then().statusCode(200);
@@ -26,7 +26,7 @@ public class APITest {
     }    
 
     @Test
-    public void Post_Auth_With_Invalid_Username_Credientials() {
+    public void Post_Auth_With_Invalid_Username_Credentials() {
         String requestBody = "{ \"username\": \"doesnotexist\", \"password\": \"" + valid_password + "\" }";
         Response response = APIAuth(requestBody);
         response.then().statusCode(200);
@@ -36,7 +36,7 @@ public class APITest {
     }
  
     @Test
-    public void Post_Auth_With_Invalid_Password_Credientials() {
+    public void Post_Auth_With_Invalid_Password_Credentials() {
         String requestBody = "{ \"username\": \"" + valid_username + "\", \"password\": \"badpassword\" }";
         Response response = APIAuth(requestBody);
         response.then().statusCode(200);
@@ -46,7 +46,7 @@ public class APITest {
     }
  
     @Test
-    public void Post_Auth_With_No_Credientials() {
+    public void Post_Auth_With_No_Credientals() {
         String requestBody = "{  }";
         Response response = APIAuth(requestBody);
         response.then().statusCode(200);
@@ -56,7 +56,7 @@ public class APITest {
     }
 
     @Test
-    public void Post_Auth_With_Missing_Username_Credientials() {
+    public void Post_Auth_With_Missing_Username_Credentials() {
         String requestBody = "{ \"password\": \"" + valid_password + "\" }";
         Response response = APIAuth(requestBody);
         response.then().statusCode(200);
@@ -66,7 +66,7 @@ public class APITest {
     }
 
     @Test
-    public void Post_Auth_With_Missing_Password_Credientials() {
+    public void Post_Auth_With_Missing_Password_Credentials() {
         String requestBody = "{ \"username\": \"" + valid_username + "\" }";
         Response response = APIAuth(requestBody);
         response.then().statusCode(200);

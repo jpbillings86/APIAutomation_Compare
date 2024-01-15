@@ -6,7 +6,7 @@ const { assert } = chai;
 var validUsername = 'admin';
 var validPassword = 'password123';
 
-it('POST /auth with valid credientials', () => {
+it('POST /auth with valid credentials', () => {
   const data = {
       username: validUsername,
       password: validPassword,
@@ -22,7 +22,7 @@ it('POST /auth with valid credientials', () => {
     });
 });
 
-it('POST /auth with invalid username credientials', () => {
+it('POST /auth with invalid username credentials', () => {
   const data = {
       username: 'doesnotexist',
       password: validPassword,
@@ -39,7 +39,7 @@ it('POST /auth with invalid username credientials', () => {
     });
 });
 
-it('POST /auth with invalid password credientials', () => {
+it('POST /auth with invalid password credentials', () => {
   const data = {
       username: validUsername,
       password: 'badpassword',
@@ -56,7 +56,7 @@ it('POST /auth with invalid password credientials', () => {
     });
 });
 
-it('POST /auth with no credientials', () => {
+it('POST /auth with no credentials', () => {
   const data = {};
   return request
    .post ('/auth')
@@ -70,7 +70,7 @@ it('POST /auth with no credientials', () => {
     });
 });
 
-it('POST /auth with missing username credientials', () => {
+it('POST /auth with missing username credentials', () => {
   const data = {
     password: validPassword
    };
@@ -86,7 +86,7 @@ it('POST /auth with missing username credientials', () => {
     });
 });
 
-it('POST /auth with missing password credientials', () => {
+it('POST /auth with missing password credentials', () => {
   const data = {
       username: validUsername
    };
