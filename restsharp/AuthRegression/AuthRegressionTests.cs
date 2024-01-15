@@ -23,7 +23,7 @@ public class AuthRegressionTests
     }
 
     [Test]
-    public void Post_Auth_With_Valid_Credientials()
+    public void Post_Auth_With_Valid_Credentials()
     {
         var response = AuthCall(valid_username, valid_password);
 
@@ -33,7 +33,7 @@ public class AuthRegressionTests
     }
 
     [Test]
-    public void Post_Auth_With_Invalid_Username_Credientials()
+    public void Post_Auth_With_Invalid_Username_Credentials()
     {
         var response = AuthCall("doesnotexist", valid_password);
 
@@ -45,7 +45,7 @@ public class AuthRegressionTests
     }
     
     [Test]
-    public void Post_Auth_With_Invalid_Password_Credientials()
+    public void Post_Auth_With_Invalid_Password_Credentials()
     {
         var response = AuthCall(valid_username, "badpassword");
 
@@ -57,7 +57,7 @@ public class AuthRegressionTests
     }
     
     [Test]
-    public void Post_Auth_With_No_Credientials()
+    public void Post_Auth_With_No_Credentials()
     {
         var response = AuthCall(null, null);
 
@@ -69,7 +69,7 @@ public class AuthRegressionTests
     }
     
     [Test]
-    public void Post_Auth_With_Missing_Username_Credientials()
+    public void Post_Auth_With_Missing_Username_Credentials()
     {
         var response = AuthCall(null, valid_password);
 
@@ -81,7 +81,7 @@ public class AuthRegressionTests
     }
     
     [Test]
-    public void Post_Auth_With_Missing_Password_Credientials()
+    public void Post_Auth_With_Missing_Password_Credentials()
     {
         var response = AuthCall(valid_username, null);
 

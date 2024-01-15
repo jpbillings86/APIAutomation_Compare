@@ -19,7 +19,7 @@ def authPost(body)
 end
 
 describe '/Auth' do
-  it 'POST /auth with valid credientials' do
+  it 'POST /auth with valid credentials' do
     response = authPost({ username: "#{VALID_USERNAME}", password: "#{VALID_PASSWORD}" })
     json_response = JSON.parse(response.body)
 
@@ -28,7 +28,7 @@ describe '/Auth' do
     expect(json_response).to include('token')
   end
 
-  it 'POST /auth with invalid username credientials' do
+  it 'POST /auth with invalid username credentials' do
     response = authPost({ username: "doesnotexist", password: "#{VALID_PASSWORD}" })
     json_response = JSON.parse(response.body)
 
@@ -38,7 +38,7 @@ describe '/Auth' do
     expect(json_response['reason']).to eq('Bad credentials')
   end
 
-  it 'POST /auth with invalid password credientials' do
+  it 'POST /auth with invalid password credentials' do
     response = authPost({ username: "#{VALID_USERNAME}", password: "badpassword" })
     json_response = JSON.parse(response.body)
 
@@ -48,7 +48,7 @@ describe '/Auth' do
     expect(json_response['reason']).to eq('Bad credentials')
   end
 
-  it 'POST /auth with no credientials' do
+  it 'POST /auth with no credentials' do
     response = authPost({ })
     json_response = JSON.parse(response.body)
 
@@ -58,7 +58,7 @@ describe '/Auth' do
     expect(json_response['reason']).to eq('Bad credentials')
   end
 
-  it 'POST /auth with missing username credientials' do
+  it 'POST /auth with missing username credentials' do
     response = authPost({ password: "#{VALID_PASSWORD}" })
     json_response = JSON.parse(response.body)
 
@@ -68,7 +68,7 @@ describe '/Auth' do
     expect(json_response['reason']).to eq('Bad credentials')
   end
 
-  it 'POST /auth with missing password credientials' do
+  it 'POST /auth with missing password credentials' do
     response = authPost({ username: "#{VALID_USERNAME}" })
     json_response = JSON.parse(response.body)
 
